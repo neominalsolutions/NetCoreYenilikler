@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+@* ViewImports dosyasına addTagHelper eklemeyi unutmayalım bide build alalım. *@
+
+<text-centered content-text="Deneme1"></text-centered>
+<text-centered content-text="Deneme2"></text-centered>
+<text-centered content-text="Deneme3"></text-centered>
+
+<div class="row"></div>
+
+@*<container centered>
+  <row margin="5">
+    <col size="6" /></col>
+  </row>
+</container>
+*@
+
+<alert type="Warning" text="Dikkat" onClick="WClick(event)"></alert>
+<alert type="Error" text="Hata"></alert>
+<alert type="Info" text="Bilgilendirme"></alert>
+
+@*<save-button></save-button>
+<button class="btn btn-success"><i class="fa fa-save"></i></button>*@
+
+@section Scripts {
+  <script>
+
+    function WClick(event){
+      console.log('event', event);
+    }
+  </script>
+}

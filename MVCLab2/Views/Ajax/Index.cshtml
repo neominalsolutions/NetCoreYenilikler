@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<button onclick="ExternalRequest()">External Request</button>
+<button onclick="InternalRequest()">Internal Request</button>
+
+
+
+<ul id="todos">
+
+</ul>
+
+
+@section Scripts {
+
+  <script>
+
+
+    function ExternalRequest(){
+       $(document).ready(() => {
+
+      $.ajax({
+        method:'GET',
+        url:'https://jsonplaceholder.typicode.com/todos',
+        success:(response) => {
+          console.log('response', response);
+
+          $('#todos').empty(); // div içini boşalt
+
+          // json result olarak gelen data içerisinde dönmek ve html bind etmek için kullandık.
+          $.each(response,function (key,item) {
+              console.log('key', key);
+              $('#todos').append(`<li>${item.title}</li>`)
+          })
+        },
+        error:(err) => {
+          console.log('err', err);
+        }
+      })
+
+    });
+    }
+
+       function InternalRequest(){
+       $(document).ready(() => {
+
+      $.ajax({
+        method:'GET',
+        url:'/Ajax/GetTodos',
+        success:(response) => {
+          console.log('response', response);
+
+           $('#todos').empty(); // div içini boşalt
+
+          // json result olarak gelen data içerisinde dönmek ve html bind etmek için kullandık.
+          $.each(response,function (key,item) {
+              console.log('key', key);
+              $('#todos').append(`<li>${item.title}</li>`)
+          })
+        },
+        error:(err) => {
+          console.log('err', err);
+        }
+      })
+
+    });
+    }
+
+   
+  </script>
+  
+
+}
+
